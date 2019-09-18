@@ -13,9 +13,10 @@ class MainController extends Controller
      * @return \Symfony\Component\HttpFoundation\Response
      * @Route("/", name="home")
      */
-    public function home(){
+    public function home()
+    {
 
-        return $this -> render('main/home.html.twig');
+        return $this->render('main/home.html.twig');
     }
 
 }
