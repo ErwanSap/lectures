@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Lecture Manga</title>
+    <link rel="stylesheet" href="{{ asset("css/app.css") }}">
+    <link rel="icon" href="{{ asset('image/favicon.ico') }}">
+</head>
+<body>
+        <div class="container">
+            <header class="header1">
+                 {% include ('inc/header.html.twig') %}
+            </header>
+            <nav>
+                {% include('inc/nav.html.twig') %}
+            </nav>
+            <main class="main1">
+                {% block main %} {% endblock %}
+               <h1>bonjour et bienvenue sur mon site</h1>
+            </main>
+            <footer class="footer1">
+                {% include ('inc/footer.html.twig') %}
+            </footer>
+        </div>
+
+</body>
+</html>
