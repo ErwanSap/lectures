@@ -7,6 +7,8 @@
 
     {# condition pour diriger l'utilisateur vers le lien #}
     {# is_granted ( si on est connecter alors)  #}
+    {# si je suis connecter le lien logout est afficher
+      sinon on est rediriger vers le liens login et register #}
     {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
         <li><a href="{{ path('logout') }}">Logout</a> </li>
     {%  else %}
