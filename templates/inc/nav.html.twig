@@ -4,4 +4,12 @@
     <a href="{{ path('read') }}">Lecture</a>
     <a href="{{ path('register') }}">Enrengistrement</a>
     <a href="{{ path('login') }}">Connexion</a>
+
+    {# condition pour diriger l'utilisateur vers le lien #}
+    {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+        <li><a href="{{ path('logout') }}">Logout</a> </li>
+    {%  else %}
+        <a href="{{ path('login') }}"></a>
+        <a href="{{ path('register') }}"></a>
+    {% endif %}
 </nav>

@@ -1,6 +1,9 @@
 {% extends 'layout.html.twig' %}
 
 {% block main %}
+        {# crée un form avec une methode post pour renvoyé la validation #}
+        <form method="post">
+
         {# creation de l'espace de saisi du pseudo #}
         <label for="username">Pseudo:</label>
         <input type="text" name="_username" id="username">
@@ -11,6 +14,7 @@
 
         {# creation du bouton de validation des saisis #}
         <input type="submit" value="Valider" name="valider">
+        </form>
 {% endblock %}
 
 {% block title %} Login {% endblock %}
