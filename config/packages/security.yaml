@@ -1,0 +1,29 @@
+security:
+    providers:
+        our_db_provider:
+            entity:
+                class: App\Entity\User
+                property: username
+
+    firewalls:
+        main:
+            pattern: ^/
+            provider: our_db_provider
+            anonymous: ~
+            # creation du lien login#
+            form_login:
+                login_path: login
+                check_path: login
+            logout_on_user_change: true
+            # creation de la redirection de logoutvers home#
+            logout:
+                path: logout
+                target: home
+
+    encoders:
+        App\Entity\User:
+            algorithm: bcrypt
+
+    #access control:
+        # Céation quand l'url commence par admin seul la personne qui à le ROLE_ADMIN peut se connecter  #
+     # {path: ^/admin, roles: ROLE_ADMIN}
