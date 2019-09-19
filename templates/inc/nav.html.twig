@@ -6,6 +6,7 @@
     <a href="{{ path('login') }}">Connexion</a>
 
     {# condition pour diriger l'utilisateur vers le lien #}
+    {# is_granted ( si on est connecter alors)  #}
     {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
         <li><a href="{{ path('logout') }}">Logout</a> </li>
     {%  else %}
