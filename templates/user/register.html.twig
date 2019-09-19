@@ -1,0 +1,9 @@
+{% extends 'layout.html.twig' %}
+
+{% block main %}
+    {{ form_start(registerForm) }}
+    {{ form_widget(registerForm) }}
+    <input type="submit" value="Valider" name="valider">
+    {{ form_end(registerForm) }}
+{% endblock %}
+{% block title %} Enrengistrement {% endblock %}
