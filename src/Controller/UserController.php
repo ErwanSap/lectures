@@ -28,8 +28,12 @@ class UserController extends Controller
         $user = new User();
         //creation de la date de création, pas obligatoire
         $user->setDateCreated(new \DateTime());
+        //
+        $user->setIsAdmin(false);
 
-        //crée un registerform qui appel le creatform pour le formulaire
+        //$user->getRoles($this->login());
+        //crée un registerform qui appel le creatform pour le formulaire et
+        //qui crée le formulaire dans la variable $user
         //on passe en deuxieme argument le user
         $registerForm = $this->createForm(RegisterType::class, $user);
 
@@ -46,10 +50,13 @@ class UserController extends Controller
             //sauvegarder l'utilisateur
             $em ->persist($user);
             $em->flush();
+
+            //redirige vers la page login
+            return $this->redirectToRoute('login');
         }
 
 
-        //retourne et passer a la vu avec le registerform
+        //retourne, crée la vu et passer  la vu avec le registerform
         return $this->render('user/register.html.twig', [
             'registerForm' => $registerForm->createView(),
         ]);

@@ -1,18 +1,24 @@
 <nav class="navigation">
-    <a href="{{ path('home') }}">Accueil</a>
-    <a href="{{ path('book') }}">Liste de livre</a>
-    <a href="{{ path('read') }}">Lecture</a>
-    <a href="{{ path('register') }}">Enrengistrement</a>
-    <a href="{{ path('login') }}">Connexion</a>
+    {#<a href="{{ path('home') }}">Accueil</a>#}
+    {#<a href="{{ path('book') }}">Liste de livre</a>#}
+   {# <a href="{{ path('read') }}">Lecture</a>#}
+   {# <a href="{{ path('register') }}">Enrengistrement</a>#}
+   {# <a href="{{ path('login') }}">Connexion</a>#}
+    {#<a href="{{ path('ajouter') }}">Administrateur</a>#}
 
     {# condition pour diriger l'utilisateur vers le lien #}
     {# is_granted ( si on est connecter alors)  #}
     {# si je suis connecter le lien logout est afficher
       sinon on est rediriger vers le liens login et register #}
     {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
-        <li><a href="{{ path('logout') }}">Logout</a> </li>
+        <a href="{{ path('logout') }}">Logout</a>
+        <a href="{{ 'ajouter' }}">Administrateur</a>
     {%  else %}
         <a href="{{ path('login') }}"></a>
         <a href="{{ path('register') }}"></a>
+    {% endif %}
+
+    {% if not app.user('ROLE_ADMIN') %}
+        {#<a href="{{ 'ajouter' }}">Administrateur</a>#}
     {% endif %}
 </nav>

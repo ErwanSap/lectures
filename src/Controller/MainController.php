@@ -10,7 +10,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class MainController extends Controller
 {
     /**
-     * @return \Symfony\Component\HttpFoundation\Response
+     *
      * @Route("/", name="home")
      */
     public function home()

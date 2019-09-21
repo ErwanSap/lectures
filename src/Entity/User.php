@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
+//use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
@@ -36,15 +37,12 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=255)
+     * //@Assert\lenght(min='4', minMessage="votre mot de passse doit faire minimum 4 carctères")
+     *
      */
     private $password;
 
     // par defaut retourne true
-    //
-    //  l'orm\Column(type="boolean", nullable= false) pose un probleme voir avec
-    //le formateur  /**
-    //     * @ORM\Column(type="boolean", nullable= false)
-    //     */
 
     private $roles;
 
@@ -52,6 +50,10 @@ class User implements UserInterface
      * @ORM\Column(type="datetime")
      */
     private $dateCreated;
+    /**
+     * @ORM\Column(type="boolean", name="is_admin")
+     */
+    private $isAdmin;
 
     public function getId()
     {
@@ -96,7 +98,7 @@ class User implements UserInterface
 
     public function getRoles()
     {
-        return ['ROLE_USER'];
+        return ['ROLE_USER','ROLE_ADMMIN'];
     }
 
     public function getDateCreated()
@@ -111,10 +113,31 @@ class User implements UserInterface
         return $this;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getIsAdmin()
+    {
+        return $this->isAdmin;
+    }
+
+    /**
+     * @param mixed $isAdmin
+     */
+    public function setIsAdmin($isAdmin)
+    {
+        $this->isAdmin = $isAdmin;
+        return ['ROLE_ADMIN'];
+    }
+
+
+
+
     //retourne rien
     public function getSalt(){return null;}
 
     public function eraseCredentials(){}
+
 
 
 }

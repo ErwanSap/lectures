@@ -5,8 +5,13 @@ security:
                 class: App\Entity\User
                 property: username
 
+
     firewalls:
-        main:
+        # dev:
+          #  pattern: ^/(_(profiler|wdt)|css|images|js)/
+           #  security: false
+
+         main:
             pattern: ^/
             provider: our_db_provider
             anonymous: ~
@@ -24,6 +29,7 @@ security:
         App\Entity\User:
             algorithm: bcrypt
 
-    #access control:
-        # Céation quand l'url commence par admin seul la personne qui à le ROLE_ADMIN peut se connecter  #
-     # {path: ^/admin, roles: ROLE_ADMIN}
+    access_control:
+         #Céation quand l'url commence par admin seul la personne qui à le ROLE_ADMIN peut se connecter  #
+         - { path: ^/admin, roles: ROLE_ADMIN }
+        #- { path: ^/, roles: ROLE_USER }

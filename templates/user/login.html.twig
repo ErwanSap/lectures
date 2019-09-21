@@ -2,7 +2,7 @@
 
 {% block main %}
         {# crée un form avec une methode post pour renvoyé la validation #}
-        <form method="post">
+        <form action="{{ path('login') }}" method="post">
 
         {# creation de l'espace de saisi du pseudo #}
         <label for="username">Pseudo:</label>
