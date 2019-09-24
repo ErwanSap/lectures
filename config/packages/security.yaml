@@ -31,5 +31,5 @@ security:
 
     access_control:
          #Céation quand l'url commence par admin seul la personne qui à le ROLE_ADMIN peut se connecter  #
-         - { path: ^/admin, roles: ROLE_ADMIN }
-        #- { path: ^/, roles: ROLE_USER }
+         #- { path: ^/admin, roles: ROLE_ADMIN }
+        #- { path: ^/admin, roles: ROLE_USER }

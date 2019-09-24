@@ -22,57 +22,61 @@ class AdminController extends Controller
      */
     public function admin()
     {
-        $this->denyAccessUnlessGranted('ROLE_ADMIN');
-       // if (!$this->isGranted('ROLE_ADMIN')){
-        //    throw new AccessDeniedException();
-       // }
-        //Si la personne n'a pas ce roles là alors il y aura une erreur 403
-        //$this->denyAccessUnlessGranted('ROLE_ADMIN', null,'vous n\'avez pas le role administrateur pour consulter cette page');
+        //$this->denyAccessUnlessGranted('ROLE_ADMIN');
 
-        //$admin = new User();
+       // if (!$this->get('security.authorization_checker')->isGranted('ROLE_ADMIN')) {
+          //  throw $this->createAccessDeniedException('GET OUT!');
+            // if (!$this->isGranted('ROLE_ADMIN')){
+            //    throw new AccessDeniedException();
+            // }
+            //Si la personne n'a pas ce roles là alors il y aura une erreur 403
+            //$this->denyAccessUnlessGranted('ROLE_ADMIN', null,'vous n\'avez pas le role administrateur pour consulter cette page');
 
-       // $adminForm = $this->createForm(RegisterType::class, $admin);
+            //$admin = new User();
 
-        //return $this->render('admin/admin.html.twig', [
-        //    'adminForm' => 'AdminController',
-       // ]);
-        //return new Response('ok');
-        return $this->render('admin/ajouter.html.twig', [
+            // $adminForm = $this->createForm(RegisterType::class, $admin);
 
-        ]);
-    }
+            //return $this->render('admin/admin.html.twig', [
+            //    'adminForm' => 'AdminController',
+            // ]);
+            //return new Response('ok');
+            return $this->render('admin/admin.html.twig', [
 
-    /**
-     * @Route("/admin/test", name="admin_home")
-     *
-    public function test(){
-        return new Response('ok');
-    }/*
-
-    /**
-     * @param Request        $request
-     *
-     * @param TokenInterface $token
-     *
-     * @return RedirectResponse
-
-    public function onAuthenticationSuccess(Request $request, TokenInterface $token)
-    {
-        $roles = $token->getRoles();
-
-        $rolesTab = array_map(function ($role) {
-            return $role->getRole();
-        }, $roles);
-
-        if (in_array('ROLE_ADMIN', $rolesTab, true)) {
-            // c'est un aministrateur : on le rediriger vers l'espace admin
-            $redirection = new RedirectResponse($this->router->generate('ajouter'));
-        } else {
-            // c'est un utilisaeur lambda : on le rediriger vers l'accueil
-            $redirection = new RedirectResponse($this->router->generate('home'));
+            ]);
         }
 
-        return $redirection;
-    }*/
+        /*
+         * @Route("/admin/test", name="admin_home")
+         *
+         * public function test(){
+         * return new Response('ok');
+         * }/*
+         *
+         * /**
+         * @param Request $request
+         *
+         * @param TokenInterface $token
+         *
+         * @return RedirectResponse
+         *
+         * public function onAuthenticationSuccess(Request $request, TokenInterface $token)
+         * {
+         * $roles = $token->getRoles();
+         *
+         * $rolesTab = array_map(function ($role) {
+         * return $role->getRole();
+         * }, $roles);
+         *
+         * if (in_array('ROLE_ADMIN', $rolesTab, true)) {
+         * // c'est un aministrateur : on le rediriger vers l'espace admin
+         * $redirection = new RedirectResponse($this->router->generate('ajouter'));
+         * } else {
+         * // c'est un utilisaeur lambda : on le rediriger vers l'accueil
+         * $redirection = new RedirectResponse($this->router->generate('home'));
+         * }
+         *
+         * return $redirection;
+         * }*/
+   // }
 
 }

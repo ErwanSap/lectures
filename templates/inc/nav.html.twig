@@ -18,6 +18,7 @@
         <a href="{{ path('register') }}"></a>
     {% endif %}
 
+
     {% if not app.user('ROLE_ADMIN') %}
         {#<a href="{{ 'ajouter' }}">Administrateur</a>#}
     {% endif %}

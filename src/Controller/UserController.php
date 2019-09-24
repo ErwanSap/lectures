@@ -28,7 +28,7 @@ class UserController extends Controller
         $user = new User();
         //creation de la date de création, pas obligatoire
         $user->setDateCreated(new \DateTime());
-        //
+        //pour dire que les personnes qui s'incrive ne sont pas administeur
         $user->setIsAdmin(false);
 
         //$user->getRoles($this->login());

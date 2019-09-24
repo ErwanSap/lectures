@@ -98,7 +98,15 @@ class User implements UserInterface
 
     public function getRoles()
     {
-        return ['ROLE_USER','ROLE_ADMMIN'];
+         $roles=[];
+
+        if ($this->isAdmin == 1) {
+            $this->roles = ['ROLE_USER', 'ROLE_ADMMIN'];
+        } else {
+
+            $this->roles = ['ROLE_USER'];
+        }
+        return $this->roles;
     }
 
     public function getDateCreated()
