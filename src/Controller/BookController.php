@@ -12,11 +12,11 @@ class BookController extends Controller
      */
     public function book()
     {
-        //Sio la personne n'a pas ce roles là alors il y aura une erreur 403
+        //Si la personne n'a pas ce roles là alors il y aura une erreur 403
         //$this->denyAccessUnlessGranted('ROLE_ADMIN');
 
         return $this->render('book/livre.html.twig', [
-            'controller_name' => 'BookController',
+            'data_class' => 'BookController',
         ]);
     }
 }

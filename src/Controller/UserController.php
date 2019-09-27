@@ -28,7 +28,7 @@ class UserController extends Controller
         $user = new User();
         //creation de la date de création, pas obligatoire
         $user->setDateCreated(new \DateTime());
-        //pour dire que les personnes qui s'incrive ne sont pas administeur
+        //pour dire que les personnes qui s'incrive ne sont pas administrateur
         $user->setIsAdmin(false);
 
         //$user->getRoles($this->login());
@@ -72,10 +72,10 @@ class UserController extends Controller
         ]);
     }
 
-    //declaration de la deconnexion avec la route et une fonction vide
-    //ne pas oublier la declaration dans le fichier security
-    //symfony gere entierement cette route
-    //ne pas oublier de faire la declaration dans le fichier security
+    //déclaration de la déconnexion avec la route et une fonction vide
+    //ne pas oublier la déclaration dans le fichier sécurity
+    //symfony gère entièrement cette route
+    //ne pas oublier de faire la déclaration dans le fichier sécurity
     /**
      * @Route("/logout",name="logout")
      *

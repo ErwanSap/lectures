@@ -2,8 +2,11 @@
 
 namespace App\Controller;
 
+use App\Entity\Book;
 use App\Entity\User;
+use App\Form\AdminType;
 use App\Form\RegisterType;
+use Doctrine\ORM\EntityManagerInterface;
 use PhpParser\Node\Stmt\Throw_;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -18,10 +21,30 @@ class AdminController extends Controller
 {
     /**
      * @Route("/admin", name="admin")
-     *
+     * @param EntityManagerInterface $em
+     * @return Response
      */
-    public function admin()
+    public function admin( Request $request,EntityManagerInterface $em)
     {
+
+        $book = new Book();
+
+        $book->setDateCreated(new \DateTime());
+
+        $bookForm = $this->createForm(AdminType::class, $book);
+
+        $bookForm->handleRequest($request);
+
+        if ($bookForm->isSubmitted() && $bookForm->isValid()){
+
+            //sauvegarder l'utilisateur
+            $em ->persist($book);
+            $em->flush();
+
+            //redirige vers la page login
+            return $this->redirectToRoute('login');
+        }
+
         //$this->denyAccessUnlessGranted('ROLE_ADMIN');
 
        // if (!$this->get('security.authorization_checker')->isGranted('ROLE_ADMIN')) {
@@ -36,13 +59,14 @@ class AdminController extends Controller
 
             // $adminForm = $this->createForm(RegisterType::class, $admin);
 
-            //return $this->render('admin/admin.html.twig', [
-            //    'adminForm' => 'AdminController',
-            // ]);
-            //return new Response('ok');
             return $this->render('admin/admin.html.twig', [
+                //'adminForm' => Book::class,
+                'bookForm' => $bookForm->createView()
+             ]);
+            //return new Response('ok');
+            //return $this->render('admin/admin.html.twig', [
 
-            ]);
+            //]);
         }
 
         /*
