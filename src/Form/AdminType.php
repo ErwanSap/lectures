@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Book;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -21,10 +22,19 @@ class AdminType extends AbstractType
             ->add('description', TextType::class,[
                 'label' => 'description'
             ])
+            ->add('nombre_de_page', TextType::class,[
+               'label' => 'nombre de page'
+                ])
             ->add('url', FileType::class)
-            ->add('valider', SubmitType::class,[
+            ->add('dateCreated', DateType::class, [
+                'widget' => 'single_text',
+                // this is actually the default format for single_text
+                'format' => 'yyyy-MM-dd',
             ])
-            ->getForm()
+            ->add('dateDeModif', DateType::class, [
+
+            ])
+            //->getForm()
         ;
         //return array('form'=>$form->createView);
     }
