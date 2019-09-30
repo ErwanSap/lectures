@@ -1,0 +1,59 @@
+/*
+*@Route('/accueil', name="accueil")
+*
+*/
+public function sortie(EntityManagerInterface $em)
+{
+	$sortie = new Sortie;
+	
+	
+	
+	//si le lien est 
+	
+	if($sortie->isSubmit && $datHeureDebut > $dateLimiteInscription){
+		
+		//todo
+		
+		//pour afficher un message
+		$this ->addFlash('success','vous etes inscrit');
+	
+		$em->persit();
+		$em->fluch();
+	
+	
+	
+	}
+	return $this->render('lien fichier twig',[
+	]);
+	
+}	
+	
+	
+/*
+*@Route('/accueil', name="accueil")
+*
+*/
+public function seDesister (EntityManagerInterface $em)
+{)
+{
+	$seDesister = new SeDesister;
+	
+	
+	
+	
+	$seDesisterForm = $this->createForm(RegisterType::class, $seDesister);
+	
+	if($seDesister ->isSubmit){
+		//todo
+	
+	
+	$em->persit();
+	$em->fluch();
+	
+	
+	
+	}
+	return $this->render('lien fichier twig',[
+	]);
+	
+}

@@ -1,0 +1,13 @@
+{% extends 'layout.html.twig' %}
+
+{% block main %}
+    <h1>Administrateur</h1>
+
+{#{{ form(adminForm) }}#}
+    {{ form_start(bookForm) }}
+    {{ form_widget(bookForm) }}
+     <input type="submit" value="Valider" name="valider">
+     {{ form_end(bookForm) }}
+
+{% endblock %}
+{% block title %} Administrateur {% endblock %}
